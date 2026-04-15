@@ -1,0 +1,39 @@
+{
+  "entities": {
+    "PortfolioItem": {
+      "title": "Portfolio Item",
+      "description": "A project or photo in the portfolio.",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string", "description": "Title of the work" },
+        "description": { "type": "string", "description": "Description of the work" },
+        "imageUrl": { "type": "string", "format": "url", "description": "URL of the portfolio image" },
+        "createdAt": { "type": "string", "format": "date-time", "description": "When it was added" },
+        "userId": { "type": "string", "description": "UID of the owner" }
+      },
+      "required": ["title", "imageUrl", "userId", "createdAt"]
+    },
+    "ContactMessage": {
+      "title": "Contact Message",
+      "description": "A message sent via the contact form.",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string", "description": "Name of the sender" },
+        "email": { "type": "string", "format": "email", "description": "Email of the sender" },
+        "message": { "type": "string", "description": "The message content" },
+        "createdAt": { "type": "string", "format": "date-time", "description": "When it was sent" }
+      },
+      "required": ["name", "email", "message", "createdAt"]
+    }
+  },
+  "firestore": {
+    "/portfolio": {
+      "schema": "PortfolioItem",
+      "description": "Collection of portfolio items"
+    },
+    "/messages": {
+      "schema": "ContactMessage",
+      "description": "Collection of contact form messages"
+    }
+  }
+}
